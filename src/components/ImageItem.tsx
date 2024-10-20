@@ -1,4 +1,3 @@
-// En ImageItem.tsx
 import React from 'react';
 
 interface ImageItemProps {

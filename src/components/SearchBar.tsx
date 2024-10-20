@@ -1,32 +1,29 @@
-// src/components/SearchBar.tsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { IoIosSearch } from "react-icons/io";
 
 interface SearchBarProps {
-    onSearch: (query: string) => void;
+  onSearch?: (query: string) => void;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-    const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(event.target.value);
-    };
+  const handleSearch = () => {
+    if (onSearch) {
+      onSearch(query);
+    }
+  };
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        onSearch(query);
-    };
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={query}
-                onChange={handleInputChange}
-                placeholder="Buscar imágenes..."
-            />
-            <button type="submit">Buscar</button>
-        </form>
-    );
+  return (
+    <div className="search-bar">
+      <IoIosSearch className="search-icon" />
+      <input 
+        type="text" 
+        placeholder="You're looking for something?" 
+        value={query} 
+        onChange={(e) => setQuery(e.target.value)} 
+        onKeyDown={(e) => e.key === 'Enter' && handleSearch()} 
+      />
+    </div>
+  );
 };
-

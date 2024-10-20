@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import ImageList from '../components/ImageList';
 import useImages from '../hooks/useImages';
-import { SearchBar } from '../components/SearchBar';
+
+import { Header } from '../components/Header';
 
 export const Home = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -59,12 +60,12 @@ export const Home = () => {
     }, [searchQuery, page]);
 
     return (
-        <div>
-            <SearchBar onSearch={handleSearch} />
+        <>
+            <Header handleSearch={handleSearch}/>
             {error && <p>Error: {error}</p>}
             {loading ? <p>Cargando...</p> : (
                 <ImageList images={images} onLikeToggle={handleLikeToggle} />
             )}
-        </div>
+        </>
     );
 };
