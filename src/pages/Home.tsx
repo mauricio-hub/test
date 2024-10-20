@@ -1,14 +1,12 @@
-// src/pages/Home.tsx
 import React, { useEffect, useState } from 'react';
 import ImageList from '../components/ImageList';
 import useImages from '../hooks/useImages';
 import { SearchBar } from '../components/SearchBar';
 
-
 export const Home = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [page, setPage] = useState(1);
-    const { images, loading, error, fetchImages } = useImages(searchQuery, page);
+    const { images, loading, error, fetchImages,setImages } = useImages(searchQuery, page);
 
     const handleSearch = (query: string) => {
         setSearchQuery(query);
@@ -17,9 +15,29 @@ export const Home = () => {
     };
 
     const handleLikeToggle = async (id: number) => {
-        // Lógica para enviar el like al servidor
+        try {
+            // Enviar solicitud al servidor para alternar el estado del like
+            const response = await fetch(`http://localhost:3100/images/${id}/likes`, {
+                method: 'POST',
+            });
+    
+            if (!response.ok) {
+                throw new Error('Error al enviar el like');
+            }
+    
+            // Actualizar el estado local de las imágenes con el "like" alternado
+            const updatedImages = images.map(image =>
+                Number(image.id) === id ? { ...image, liked: !image.liked } : image
+            );
+    
+            setImages(updatedImages);
+        } catch (error) {
+            console.error('Error al alternar el like:', error);
+        }
     };
-
+    
+    
+    
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
@@ -37,17 +55,15 @@ export const Home = () => {
     }, [loading, page, searchQuery]);
 
     useEffect(() => {
-      console.log('searchQuery',searchQuery, 'page',page);
-
+        console.log('searchQuery', searchQuery, 'page', page);
     }, [searchQuery, page]);
-    
 
     return (
         <div>
             <SearchBar onSearch={handleSearch} />
             {error && <p>Error: {error}</p>}
             {loading ? <p>Cargando...</p> : (
-                <ImageList images={images}/>
+                <ImageList images={images} onLikeToggle={handleLikeToggle} />
             )}
         </div>
     );

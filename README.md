@@ -71,3 +71,9 @@ Si no dispones de photoshop puedes usar [photopea](https://www.photopea.com/).
 - HTML y estilos responsive a partir de los PSDs: mobile para móviles y web para Desktop.
 
 Se valorarán el uso e implementación de tests.
+
+# si al iniciar da problemas con version de node 
+-Configurar una variable de entorno para usar el comportamiento antiguo de OpenSSL
+ en PowerShell $env:NODE_OPTIONS="--openssl-legacy-provider"
+
+ 

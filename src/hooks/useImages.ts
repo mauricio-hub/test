@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 interface Image {
     id: string;
     url: string;
+    liked: boolean;
 }
 
 type FetchImages = (query: string, page: number) => Promise<void>;
@@ -34,7 +35,7 @@ const useImages = (searchQuery: string, page: number) => {
         fetchImages(searchQuery, page);
     }, [searchQuery, page]);
 
-    return { images, loading, error, fetchImages };
+    return { images, loading, error, fetchImages,setImages };
 };
 
 export default useImages;
