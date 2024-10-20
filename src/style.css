@@ -1,6 +1,7 @@
 body{
     background-color: rgb(255, 255, 255); /* todo cambiar el color del body */
-    color: rgb(121, 121, 121);
+    margin: 0; /* Eliminar el margen por defecto */
+    font-family: Arial, sans-serif; /* Fuente por defecto */
 }
 
 /* Header */
@@ -16,7 +17,10 @@ body{
   .logo {
     margin: 0;
   }
-  
+
+  /* Image  */
+
+
 
 /* SearchBar */
 
@@ -51,4 +55,76 @@ body{
     font-size: 10px;
     opacity: 1;
 
+}
+
+/* itemsimage */
+.image-item {
+    border: 1px solid #ccc; /* Bordes opcionales */
+    text-align: center; /* Centrar texto */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: transform 0.2s; /* Transición al pasar el mouse */
+    position: relative; /* Habilita el posicionamiento relativo */
+}
+
+.image-item:hover {
+    transform: scale(1.02); /* Aumentar ligeramente al pasar el mouse */
+}
+
+.image-item img {
+    max-width: 100%; /* Asegurar que la imagen no exceda el ancho */
+    height: auto; /* Mantener la relación de aspecto */
+    border-radius: 2px; /* Bordes redondeados en la imagen */
+}
+
+.image-item h3 {
+    margin: 8px 0; /* Margen alrededor del título */
+}
+
+/* Estilo para el ícono de like */
+.like-icon {
+    cursor: pointer; /* Cambiar cursor al pasar sobre el ícono */
+    color: #00ff62; /* Color del ícono */
+    font-size: 24px; /* Tamaño del ícono */
+    transition: color 0.2s; /* Transición para el color del ícono */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 8px; /* Ajusta la posición desde la parte superior */
+    right: 8px; /* Ajusta la posición desde la derecha */
+}
+
+.like-icon:hover {
+    color: #00b386; /* Color del ícono al pasar el mouse */
+}
+
+
+
+/* image list */
+
+.image-list {
+    background-color: #f8f8f8;
+    margin-top: 20px;
+    padding: 20px;
+    display: grid;
+    gap: 16px; /* Espacio entre los elementos */
+}
+
+/* Estilo para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .image-list {
+        grid-template-columns: repeat(1, 1fr); /* 1 columna para móviles */
+    }
+}
+
+/* Estilo para pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 1200px) {
+    .image-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas para tabletas */
+    }
+}
+
+/* Estilo para pantallas grandes (escritorio) */
+@media (min-width: 1201px) {
+    .image-list {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas para escritorios */
+    }
 }
