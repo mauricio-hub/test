@@ -60,12 +60,12 @@ export const Home = () => {
     }, [searchQuery, page]);
 
     return (
-        <>
+        <div className='container'>
             <Header handleSearch={handleSearch}/>
             {error && <p>Error: {error}</p>}
             {loading ? <p>Cargando...</p> : (
                 <ImageList images={images} onLikeToggle={handleLikeToggle} />
             )}
-        </>
+        </div>
     );
 };

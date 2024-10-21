@@ -1,5 +1,5 @@
 import { SearchBar } from "./SearchBar";
-
+import logo from "../assets/logo.png";
 
 interface HeaderProps {
   handleSearch: (query: string) => void;
@@ -8,8 +8,8 @@ interface HeaderProps {
 export const Header = ({ handleSearch }: HeaderProps) => {
   return (
     <header className="header">
-      <p className="logo">Logo</p>
-      <SearchBar />
+       <img src={logo} alt="Logo" className="logo"  />
+      <SearchBar onSearch={handleSearch} />
     </header>
   );
 };
