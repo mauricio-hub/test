@@ -55,46 +55,96 @@ body{
     opacity: 1;
 }
 
-/* itemsimage */
+/* Estilos de las tarjetas (image-item) */
 .image-item {
-    border: 1px solid #ccc; 
+    border: 1px solid #e0e0e0; 
     text-align: center; 
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.2s; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s; 
     position: relative; 
+    overflow: hidden; /* Para cortar cualquier contenido que se salga */
 }
 
 .image-item:hover {
-    transform: scale(1.02);
+    transform: scale(1.05); /* Animación de hover */
 }
 
 .image-item img {
-    max-width: 100%; /* Asegurar que la imagen no exceda el ancho */
-    height: auto; /* Mantener la relación de aspecto */
-    border-radius: 2px; /* Bordes redondeados en la imagen */
+    width: 100%; /* Asegurar que la imagen cubra todo el ancho */
+    height: 280px; /* Altura fija para la imagen */
+    object-fit: cover; /* Mantener el aspecto de la imagen */
 }
 
-.image-item h3 {
+/* Etiqueta de precio en la esquina superior izquierda */
+.price-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding: 20px 90px 50px 20px; /* Ajustar padding */
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-info {
+    padding: 15px; /* Espacio alrededor del contenido de la tarjeta */
+}
+
+.image-info h3 {
     margin: 8px 0; /* Margen alrededor del título */
+    font-size: 18px;
+    color: #333;
 }
 
-/* Estilo para el ícono de like */
+.image-info p {
+    margin: 4px 0; /* Margen pequeño para los textos */
+    font-size: 14px;
+    color: #777;
+}
+
+/* Sección de íconos (like y reload) */
+.icon-section {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Like Section */
+.like-section {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el ícono y el contador */
+    margin-bottom: 10px; /* Margen inferior para separar de la sección de reload */
+}
+
 .like-icon {
     cursor: pointer; /* Cambiar cursor al pasar sobre el ícono */
-    color: #00ff62; /* Color del ícono */
     font-size: 24px; /* Tamaño del ícono */
     transition: color 0.2s; /* Transición para el color del ícono */
-    position: absolute; /* Posicionamiento absoluto */
-    top: 8px; /* Ajusta la posición desde la parte superior */
-    right: 8px; /* Ajusta la posición desde la derecha */
 }
 
 .like-icon:hover {
     color: #00b386; /* Color del ícono al pasar el mouse */
 }
 
+/* Reload Section */
+.reload-section {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el ícono y el contador */
+}
 
+.reload-icon {
+    font-size: 24px; /* Tamaño del ícono de reload */
+    color: #ffffff; /* Color del ícono */
+}
 
 /* image list */
 
