@@ -22,7 +22,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         placeholder="You're looking for something?" 
         value={query} 
         onChange={(e) => setQuery(e.target.value)} 
-        onKeyDown={(e) => e.key === 'Enter' && handleSearch()} 
+        onKeyDown={() =>  handleSearch()} 
       />
     </div>
   );

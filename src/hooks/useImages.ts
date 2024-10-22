@@ -1,41 +1,38 @@
-import { useEffect, useState } from 'react';
-
-interface Image {
-    id: string;
-    url: string;
-    liked: boolean;
-}
-
-type FetchImages = (query: string, page: number) => Promise<void>;
+import { useState, useEffect } from 'react';
 
 const useImages = (searchQuery: string, page: number) => {
-    const [images, setImages] = useState<Image[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+  const [images, setImages] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-    const fetchImages: FetchImages = async (query, page) => {
-        setLoading(true);
-        try {
-            const response = await fetch(`http://localhost:3100/images?search=${query}&page=${page}`);
-            if (!response.ok) throw new Error('Error fetching images');
-            const data: Image[] = await response.json();
-            setImages((prev) => [...prev, ...data]);
-        } catch (err) {
-            if (err instanceof Error) {
-                setError(err.message);
-            } else {
-                setError('Error desconocido');
-            }
-        } finally {
-            setLoading(false);
-        }
-    };
+  const fetchImages = async (query: string, page: number) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`http://localhost:3100/images?page=${page}`);
+      const data = await response.json();
 
-    useEffect(() => {
-        fetchImages(searchQuery, page);
-    }, [searchQuery, page]);
+      const filteredData = data.filter((image: any) => {
+        const lowerQuery = query.toLowerCase();
+        return (
+          image.title.toLowerCase().includes(lowerQuery) ||
+          image.author.toLowerCase().includes(lowerQuery) ||
+          image.price.toString().includes(lowerQuery)
+        );
+      });
 
-    return { images, loading, error, fetchImages,setImages };
+      setImages((prevImages) => (page === 1 ? filteredData : [...prevImages, ...filteredData]));
+      setLoading(false);
+    } catch (err) {
+      setError('Error fetching images');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchImages(searchQuery, page);
+  }, [searchQuery, page]);
+
+  return { images, loading, error, fetchImages, setImages };
 };
 
 export default useImages;

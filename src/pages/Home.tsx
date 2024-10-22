@@ -10,9 +10,10 @@ export const Home = () => {
     const { images, loading, error, fetchImages,setImages } = useImages(searchQuery, page);
 
     const handleSearch = (query: string) => {
+        console.log('query', query);
         setSearchQuery(query);
-        setPage(1); // Reiniciar la página a 1 en cada búsqueda
-        fetchImages(query, 1); // Fetch inicial
+        setPage(1);
+        fetchImages(query, 1);
     };
 
     const handleLikeToggle = async (id: number) => {
@@ -47,7 +48,8 @@ export const Home = () => {
 
             if (scrollY + windowHeight >= documentHeight - 100 && !loading) {
                 setPage((prevPage) => prevPage + 1);
-                fetchImages(searchQuery, page + 1); // Fetch de la nueva página
+                // Fetch de la nueva página
+                fetchImages(searchQuery, page + 1); 
             }
         };
 
