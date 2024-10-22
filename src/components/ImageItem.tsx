@@ -31,7 +31,7 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, onLikeToggle }) => {
                     <FaThumbsUp
                         className="like-icon"
                         onClick={() => onLikeToggle(image.id)}
-                        style={{ color: '#02ee8c'  }}
+                        style={{ color: '#fff'  }}
                     />
                     <span style={{ color: '#fff' }}>00{image.likes_count}</span>
                 </div>

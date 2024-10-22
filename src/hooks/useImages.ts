@@ -1,27 +1,22 @@
 import { useState, useEffect } from 'react';
 
-const useImages = (searchQuery: string, page: number) => {
+const useImages = (page: number) => {
   const [images, setImages] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const fetchImages = async (query: string, page: number) => {
+  // Simulación de fetch de datos
+  const fetchImages = async (page: number) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3100/images?page=${page}`);
-      const data = await response.json();
+      // Simular un retraso para "cargar" más imágenes
+      setTimeout(async () => {
+        const response = await fetch(`http://localhost:3100/images?page=${page}`);
+        const data = await response.json();
 
-      const filteredData = data.filter((image: any) => {
-        const lowerQuery = query.toLowerCase();
-        return (
-          image.title.toLowerCase().includes(lowerQuery) ||
-          image.author.toLowerCase().includes(lowerQuery) ||
-          image.price.toString().includes(lowerQuery)
-        );
-      });
-
-      setImages((prevImages) => (page === 1 ? filteredData : [...prevImages, ...filteredData]));
-      setLoading(false);
+        setImages((prevImages) => (page === 1 ? data : [...prevImages, ...data])); // Paginación
+        setLoading(false);
+      }, 1000); // Simulamos un retraso de 1 segundo para la carga
     } catch (err) {
       setError('Error fetching images');
       setLoading(false);
@@ -29,8 +24,8 @@ const useImages = (searchQuery: string, page: number) => {
   };
 
   useEffect(() => {
-    fetchImages(searchQuery, page);
-  }, [searchQuery, page]);
+    fetchImages(page); // Fetch inicial o por página
+  }, [page]);
 
   return { images, loading, error, fetchImages, setImages };
 };
