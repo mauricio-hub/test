@@ -43,7 +43,7 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, onLikeToggle }) => {
                         className={`like-icon ${isLiked ? 'animate__animated animate__heartBeat' : ''}`} 
                         onClick={handleLikeClick}
                         // Cambia a verde si está "liked"
-                        style={{ color: isLiked ? '#00BC9B' : '#fff' }} 
+                        style={{ color: isLiked ? '#11e968' : '#fff' }} 
                     />
                     <span style={{ color: '#fff' }}>00{image.likes_count}</span>
                 </div>
