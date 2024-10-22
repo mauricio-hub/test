@@ -1,5 +1,6 @@
-import React from 'react';
-import { FaThumbsUp, FaRedoAlt } from 'react-icons/fa'; 
+import React, { useState } from 'react';
+import { FaThumbsUp, FaRedoAlt } from 'react-icons/fa';
+import 'animate.css';
 
 interface ImageItemProps {
     image: {
@@ -8,14 +9,24 @@ interface ImageItemProps {
         main_attachment: { big: string; small: string };
         liked: boolean;
         likes_count: number;
-        reload_count: number; 
-        author:  string ;
-        price: number; 
+        reload_count: number;
+        author: string;
+        price: number;
     };
     onLikeToggle: (id: number) => void;
 }
 
 const ImageItem: React.FC<ImageItemProps> = ({ image, onLikeToggle }) => {
+     // Estado local para gestionar el 'like' de la imagen
+    const [isLiked, setIsLiked] = useState(image.liked); 
+
+    const handleLikeClick = () => {
+        // Cambia el estado de 'liked'
+        setIsLiked(!isLiked); 
+        // Ejecuta la función para notificar el cambio 
+        onLikeToggle(image.id); 
+    };
+
     return (
         <div className="image-item">
             <div className="price-tag">
@@ -29,9 +40,10 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, onLikeToggle }) => {
             <div className="icon-section">
                 <div className="like-section">
                     <FaThumbsUp
-                        className="like-icon"
-                        onClick={() => onLikeToggle(image.id)}
-                        style={{ color: '#fff'  }}
+                        className={`like-icon ${isLiked ? 'animate__animated animate__heartBeat' : ''}`} 
+                        onClick={handleLikeClick}
+                        // Cambia a verde si está "liked"
+                        style={{ color: isLiked ? '#00BC9B' : '#fff' }} 
                     />
                     <span style={{ color: '#fff' }}>00{image.likes_count}</span>
                 </div>
