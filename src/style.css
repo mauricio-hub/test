@@ -1,16 +1,18 @@
-body{
+/* Estilos generales */
+body {
     background-color: rgb(255, 255, 255); 
     margin: 0; 
-    font-family: Arial, sans-serif; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
+/* body, .image-item h3, .image-item p {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+} */
 
 .container {
     max-width: 1400px; 
     margin: 0 auto; 
     padding: 20px; 
-   }
-
+}
 
 .header {
     display: flex;
@@ -61,15 +63,24 @@ body{
     text-align: center; 
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); 
-    transition: transform 0.3s; 
+    transition: transform 0.3s ease-in-out; 
     position: relative; 
     overflow: hidden; /* Para cortar cualquier contenido que se salga */
 }
 
 .image-item:hover {
+    
     transform: scale(1.05); /* Animación de hover */
 }
 
+/* Mostrar los íconos al hacer hover */
+.image-item:hover .icon-section {
+    
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Imagen dentro de la tarjeta */
 .image-item img {
     width: 100%; /* Asegurar que la imagen cubra todo el ancho */
     height: 280px; /* Altura fija para la imagen */
@@ -90,6 +101,7 @@ body{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Información de la tarjeta */
 .image-info {
     padding: 15px; /* Espacio alrededor del contenido de la tarjeta */
 }
@@ -114,11 +126,14 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease-in-out;
 }
 
 /* Like Section */
 .like-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px; /* Espacio entre el ícono y el contador */
     margin-bottom: 10px; /* Margen inferior para separar de la sección de reload */
@@ -137,6 +152,7 @@ body{
 /* Reload Section */
 .reload-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px; /* Espacio entre el ícono y el contador */
 }
@@ -146,8 +162,7 @@ body{
     color: #ffffff; /* Color del ícono */
 }
 
-/* image list */
-
+/* Lista de imágenes (image-list) */
 .image-list {
     background-color: #f8f8f8;
     margin-top: 20px;
