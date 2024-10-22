@@ -4,9 +4,7 @@ body {
     margin: 0; 
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-/* body, .image-item h3, .image-item p {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-} */
+
 
 .container {
     max-width: 1400px; 
@@ -65,12 +63,12 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); 
     transition: transform 0.3s ease-in-out; 
     position: relative; 
-    overflow: hidden; /* Para cortar cualquier contenido que se salga */
+    overflow: hidden; 
 }
 
 .image-item:hover {
     
-    transform: scale(1.05); /* Animación de hover */
+    transform: scale(1.05); 
 }
 
 /* Mostrar los íconos al hacer hover */
@@ -82,9 +80,9 @@ body {
 
 /* Imagen dentro de la tarjeta */
 .image-item img {
-    width: 100%; /* Asegurar que la imagen cubra todo el ancho */
-    height: 280px; /* Altura fija para la imagen */
-    object-fit: cover; /* Mantener el aspecto de la imagen */
+    width: 100%; 
+    height: 280px; 
+    object-fit: cover; 
 }
 
 /* Etiqueta de precio en la esquina superior izquierda */
@@ -93,7 +91,7 @@ body {
     top: 0;
     left: 0;
     background-color: white;
-    padding: 20px 90px 50px 20px; /* Ajustar padding */
+    padding: 20px 90px 50px 20px; 
     font-size: 14px;
     font-weight: bold;
     color: #333;
@@ -103,17 +101,17 @@ body {
 
 /* Información de la tarjeta */
 .image-info {
-    padding: 15px; /* Espacio alrededor del contenido de la tarjeta */
+    padding: 15px;
 }
 
 .image-info h3 {
-    margin: 8px 0; /* Margen alrededor del título */
+    margin: 8px 0; 
     font-size: 18px;
     color: #333;
 }
 
 .image-info p {
-    margin: 4px 0; /* Margen pequeño para los textos */
+    margin: 4px 0;
     font-size: 14px;
     color: #777;
 }
@@ -126,7 +124,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0; /* Inicialmente oculto */
+    opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -135,18 +133,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px; /* Espacio entre el ícono y el contador */
-    margin-bottom: 10px; /* Margen inferior para separar de la sección de reload */
+    gap: 5px; 
+    margin-bottom: 10px; 
 }
 
 .like-icon {
-    cursor: pointer; /* Cambiar cursor al pasar sobre el ícono */
-    font-size: 24px; /* Tamaño del ícono */
-    transition: color 0.2s; /* Transición para el color del ícono */
+    cursor: pointer;
+    font-size: 24px; 
+    transition: color 0.2s; 
 }
 
 .like-icon:hover {
-    color: #00b386; /* Color del ícono al pasar el mouse */
+    color: #00b386; 
 }
 
 /* Reload Section */
@@ -154,63 +152,61 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px; /* Espacio entre el ícono y el contador */
+    gap: 5px; 
 }
 
 .reload-icon {
-    font-size: 24px; /* Tamaño del ícono de reload */
-    color: #ffffff; /* Color del ícono */
+    font-size: 24px; 
+    color: #ffffff; 
 }
 
-/* Lista de imágenes (image-list) */
+/* Lista  */
 .image-list {
     background-color: #f8f8f8;
     margin-top: 20px;
     padding: 20px;
     display: grid;
-    gap: 16px; /* Espacio entre los elementos */
+    gap: 16px; 
 }
 
 /* Estilo para pantallas pequeñas (móviles) */
 @media (max-width: 600px) {
     .image-list {
-        grid-template-columns: repeat(1, 1fr); /* 1 columna para móviles */
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
 /* Estilo para pantallas medianas (tabletas) */
 @media (min-width: 601px) and (max-width: 1200px) {
     .image-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas para tabletas */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Estilo para pantallas grandes (escritorio) */
 @media (min-width: 1201px) {
     .image-list {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas para escritorios */
+        grid-template-columns: repeat(4, 1fr); 
     }
 }
 
 
 /* Spinner */
 
-/* Spinner.css */
-
 .spinner-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px; /* Ajusta la altura según el espacio disponible */
+    height: 100px; 
   }
   
   .spinner {
-    border: 6px solid rgba(0, 0, 0, 0.1); /* Borde externo */
-    border-left-color: #30b05f; /* Color de la animación */
+    border: 6px solid rgba(0, 0, 0, 0.1); 
+    border-left-color: #30b05f;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    animation: spin 1s linear infinite; /* Animación infinita */
+    animation: spin 1s linear infinite; 
   }
   
   @keyframes spin {
