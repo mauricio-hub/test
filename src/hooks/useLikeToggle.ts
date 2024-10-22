@@ -12,7 +12,8 @@ import { toggleLike } from '../services/imageService';
 export const useLikeToggle = (images: any[], setImages: (images: any[]) => void) => {
   const handleLikeToggle = async (id: number) => {
     try {
-      await toggleLike(id);  // Llamada a la API desde services
+      // Llamada a la API desde services
+      await toggleLike(id);  
 
       // Actualizar el estado de las imágenes para reflejar el nuevo estado de "liked"
       const updatedImages = images.map(image =>
