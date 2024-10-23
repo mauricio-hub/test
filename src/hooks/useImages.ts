@@ -15,13 +15,18 @@ const useImages = (page: number) => {
   const fetchImages = async (page: number) => {
     setLoading(true);
     try {
-      setTimeout(async () => {
+      /* setTimeout(async () => {
          // Llamada a la API desde services
         const data = await fetchImagesService(page); 
          // Paginación
         setImages((prevImages) => (page === 1 ? data : [...prevImages, ...data])); 
         setLoading(false);
-      }, 1000);  // Simulamos un retraso de 1 segundo para la carga
+        
+      }, 1000); */ 
+      //usar cuando esta en testing
+      const data = await fetchImagesService(page); 
+      setImages((prevImages) => (page === 1 ? data : [...prevImages, ...data])); 
+      setLoading(false);
     } catch (err) {
       
       setLoading(false);
