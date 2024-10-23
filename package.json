@@ -2,7 +2,7 @@
   "name": "samy-tech-test",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://mauricio-hub.github.io/test",
+  "homepage": "http://mauricio-hub.github.io/test",
   "main": "index.js",
   "scripts": {
     "mocks": "mocks-server",
