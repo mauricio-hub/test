@@ -1,7 +1,8 @@
 import React from 'react';
-import ImageItem from './ImageItem';
+import ImageItem from './ImageItem'; 
+import { data } from '../data';
 
-
+console.log('data json.....', data);
 interface ImageListProps {
     images: any[];
     onLikeToggle: (id: number) => void;
@@ -10,7 +11,7 @@ interface ImageListProps {
 const ImageList: React.FC<ImageListProps> = ({ images, onLikeToggle }) => {
     return (
         <div className="image-list">
-            {images.map((image, index) => (
+            {data.map((image, index) => (
                 <ImageItem key={index} image={image} onLikeToggle={onLikeToggle} />
             ))}
         </div>

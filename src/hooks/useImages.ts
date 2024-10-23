@@ -15,22 +15,12 @@ const useImages = (page: number) => {
   const fetchImages = async (page: number) => {
     setLoading(true);
     try {
-       setTimeout(async () => {
-         // Llamada a la API desde services
-        const data = await fetchImagesService(page); 
-         // Paginación
-        setImages((prevImages) => (page === 1 ? data : [...prevImages, ...data])); 
-        setLoading(false);
-        
-      }, 1000);  
-      //usar cuando esta en testing
-    /*   const data = await fetchImagesService(page); 
-      setImages((prevImages) => (page === 1 ? data : [...prevImages, ...data])); 
-      setLoading(false); */
-    } catch (err) {
+        console.log('page.....', page);
+    }catch (error) {
+      throw new Error("Error al obtener las imágenes");
       
-      setLoading(false);
     }
+    
   };
 
   useEffect(() => {

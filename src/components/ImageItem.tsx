@@ -9,7 +9,6 @@ interface ImageItemProps {
         main_attachment: { big: string; small: string };
         liked: boolean;
         likes_count: number;
-        reload_count: number;
         author: string;
         price: number;
     };
