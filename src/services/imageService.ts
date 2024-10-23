@@ -6,6 +6,7 @@ export const fetchImages = async (page: number) => {
 
   if (isProduction) {
     // En producción, usa el archivo JSON estático
+    console.log('estoy en produccion....',isProduction);
     response = await fetch(`${process.env.PUBLIC_URL}/images.json`);
   } else {
     console.log('estoy en desarrollo');
