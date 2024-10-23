@@ -72,8 +72,17 @@ Si no dispones de photoshop puedes usar [photopea](https://www.photopea.com/).
 
 Se valorarán el uso e implementación de tests.
 
-# si al iniciar da problemas con version de node 
+# configuracion adicional si al iniciar da problemas con version de node 
 -Configurar una variable de entorno para usar el comportamiento antiguo de OpenSSL
  en PowerShell $env:NODE_OPTIONS="--openssl-legacy-provider"
+
+ ## Testing
+
+Este proyecto utiliza Jest para realizar pruebas.
+
+Para ejecutar las pruebas:
+```bash
+npm run test
+
 
  
