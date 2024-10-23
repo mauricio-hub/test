@@ -10,7 +10,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const handleSearch = () => {
     if (onSearch) {
-      console.log('query.....', query);
+      /* console.log('query.....', query); */
       onSearch(query);
     }
   };

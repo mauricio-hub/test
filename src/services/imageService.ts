@@ -5,11 +5,11 @@ const isProduction = process.env.NODE_ENV === 'production';
 export const fetchImages = async (page: number) => {
   if (isProduction) {
     // En producción, usa el archivo estático importado desde data.ts
-    console.log('Estoy en producción....', isProduction);
-    console.log('actulizado el archivo  ****');
+   /*  console.log('Estoy en producción....', isProduction);
+    console.log('actulizado el archivo  ****'); */
     return data; // Retorna directamente los datos desde el archivo
   } else {
-    console.log('Estoy en desarrollo');
+   /*  console.log('Estoy en desarrollo'); */
     // En desarrollo, usa la API mock
     const response = await fetch(`http://localhost:3100/images?page=${page}`);
 
