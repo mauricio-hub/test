@@ -8,26 +8,27 @@ import { useLikeToggle } from '../hooks/useLikeToggle';
 import { filterImages } from '../hooks/filterImages';
 
 export const Home = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [page, setPage] = useState(1);
-    
-    const { images, loading, error, setImages, fetchImages } = useImages(page);  
+  const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(1);
 
-    // Lógica de scroll infinito
-    useInfiniteScroll(loading, fetchImages, page, setPage); 
+  // Ahora `fetchImages` está disponible para usarlo en `useInfiniteScroll`
+  const { images, loading, error, setImages, fetchImages } = useImages(page);
 
-    // Lógica de like/unlike
-    const handleLikeToggle = useLikeToggle(images, setImages);
+  // Lógica de scroll infinito
+  useInfiniteScroll(loading, fetchImages, page, setPage);
 
-    // Filtrar imágenes
-    const filteredImages = filterImages(images, searchQuery);
+  // Lógica de like/unlike
+  const handleLikeToggle = useLikeToggle(images, setImages);
 
-    return (
-        <div className='container'>
-            <Header handleSearch={setSearchQuery} />
-            <ImageList images={filteredImages} onLikeToggle={handleLikeToggle} />
-            {loading && <Spinner />}
-            {error && <p>Error: {error}</p>}
-        </div>
-    );
+  // Filtrar imágenes
+  const filteredImages = filterImages(images, searchQuery);
+
+  return (
+    <div className="container">
+      <Header handleSearch={setSearchQuery} />
+      <ImageList images={filteredImages} onLikeToggle={handleLikeToggle} />
+      {loading && <Spinner />}
+      {error && <p>Error: {error}</p>}
+    </div>
+  );
 };

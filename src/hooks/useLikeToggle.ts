@@ -12,12 +12,18 @@ import { toggleLike } from '../services/imageService';
 export const useLikeToggle = (images: any[], setImages: (images: any[]) => void) => {
   const handleLikeToggle = async (id: number) => {
     try {
-      // Llamada a la API desde services
-      await toggleLike(id);  
+      if (process.env.NODE_ENV === 'production') {
+        // En producción simulamos el like
+        console.warn(`Simulando el toggle de like para la imagen con ID ${id} en producción.`);
+      } else {
+        console.log('like estoy en desarrollo : ....)');
+        // En desarrollo hacemos la llamada real a la API mock
+        await toggleLike(id);
+      }
 
       // Actualizar el estado de las imágenes para reflejar el nuevo estado de "liked"
       const updatedImages = images.map(image =>
-        Number(image.id) === id ? { ...image, liked: !image.liked } : image
+        Number(image.id) === id ? { ...image, liked: !image.liked, likes_count: image.liked ? image.likes_count - 1 : image.likes_count + 1 } : image
       );
 
       setImages(updatedImages);

@@ -18,23 +18,19 @@ export const useInfiniteScroll = (
 ) => {
   useEffect(() => {
     const handleScroll = () => {
-        // Posición actual del scroll
       const scrollY = window.scrollY;
-       // Altura de la ventana
-      const windowHeight = window.innerHeight; 
-       // Altura total del documento
-      const documentHeight = document.documentElement.scrollHeight; 
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
       // Si el usuario ha llegado al final de la página y no está cargando imágenes
       if (scrollY + windowHeight >= documentHeight - 100 && !loading) {
         // Incrementa la página y carga más imágenes
-        setPage((prevPage) => prevPage + 1);  
-        // Carga más imágenes para la nueva página
-        fetchImages(page + 1);  
+        setPage((prevPage) => prevPage + 1);
+        fetchImages(page + 1);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);  // Añadir el evento de scroll
-    return () => window.removeEventListener('scroll', handleScroll);  // Limpiar el evento al desmontar
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [loading, page, fetchImages, setPage]);
 };
